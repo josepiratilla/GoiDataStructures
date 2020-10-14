@@ -15,6 +15,10 @@ func TestPushAndPop(t *testing.T) {
 			[]int{2, 1},
 			[]int{2, 1},
 		},
+		{
+			[]int{1, 2},
+			[]int{2, 1},
+		},
 	}
 	for _, v := range vs {
 		h := new(Heap)
