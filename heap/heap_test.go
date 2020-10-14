@@ -8,12 +8,12 @@ func TestPushAndPop(t *testing.T) {
 		expectedPop []int
 	}{
 		{
-			[]int{
-				1,
-			},
-			[]int{
-				1,
-			},
+			[]int{1},
+			[]int{1},
+		},
+		{
+			[]int{2, 1},
+			[]int{2, 1},
 		},
 	}
 	for _, v := range vs {
@@ -30,7 +30,7 @@ func TestPushAndPop(t *testing.T) {
 				t.Errorf("Unexpected error when pop %v\n", v.push)
 			}
 			if actualPop != expectedPop {
-				t.Errorf("%dth value.\nExpected Pop: %d\nActual Pop: %d\n", i, expectedPop, actualPop)
+				t.Errorf("%dth value.\nExpected Pop: %d\nActual Pop: %d\n", i+1, expectedPop, actualPop)
 			}
 		}
 	}

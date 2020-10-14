@@ -15,5 +15,7 @@ func (h *Heap) Push(i int) error {
 
 // Pop gets and removes the highest element in the heap
 func (h *Heap) Pop() (int, error) {
-	return h.data[0], nil
+	out := h.data[0]
+	h.data = h.data[1:]
+	return out, nil
 }
