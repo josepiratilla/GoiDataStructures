@@ -1,11 +1,15 @@
 package heap
 
+import "errors"
+
 // Heap represent a sorted heap to implement a priority queue
 // when pushin it will add an element to the queue, and sort it.
 // when poping it will get the highest element.
 type Heap struct {
 	data []int
 }
+
+var errEmptyQueue = errors.New("Queue is empty")
 
 // Push adds an element to the heap
 func (h *Heap) Push(i int) error {
@@ -17,11 +21,19 @@ func (h *Heap) Push(i int) error {
 
 // Pop gets and removes the highest element in the heap
 func (h *Heap) Pop() (int, error) {
+	if h.Size() == 0 {
+		return 0, errEmptyQueue
+	}
 	out := h.data[0]
 	h.swap(0, h.last())
 	h.data = h.data[:h.last()]
 	h.orderDown(0)
 	return out, nil
+}
+
+// Size is the number of elements in the queue
+func (h *Heap) Size() int {
+	return len(h.data)
 }
 
 func (h *Heap) last() int {
